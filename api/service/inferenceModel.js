@@ -51,15 +51,15 @@ async function predictClassification(model,image) {
 
         if(organik.includes(label)){
             result = 'Organik';
-            suggestion = 'Buanglah pada sampah Hijau';
+            suggestion = `Buang Sampahmu di Tempat yang Tepat! Gunakan Tempat Sampah Hijau untuk membuang sampah ini`;
         }
         else if(anorganik.includes(label)){
             result = 'Anorganik';
-            suggestion = 'Buanglah pada sampah Kuning';
+            suggestion = `Buang Sampahmu di Tempat yang Tepat! Gunakan Tempat Sampah Kuning untuk membuang sampah ini`;
         }
         else if(berbahaya.includes(label)){
             result = 'Sampah Berbahaya';
-            suggestion = 'Buanglah pada sampah Merah';
+            suggestion = `Buang Sampahmu di Tempat yang Tepat! Gunakan Tempat Sampah Merah untuk membuang sampah ini`;
         }
             
         

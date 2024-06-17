@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
-const productRoutes = require('./api/routes/predict')
+const Routes = require('./api/routes/index')
+const cookieParser = require('cookie-parser')
 
+app.use(express.json())
+app.use(cookieParser())
 
-app.use('/',productRoutes)
+app.use('/',Routes)
 
 module.exports = app
