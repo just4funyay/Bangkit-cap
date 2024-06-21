@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const  postPredictHandler  = require('../handler/predict')
+const  showall  = require('../handler/getAllPredict')
 var bodyParser = require('body-parser')
 const multer = require('multer')
 const FirebaseAuthController = require('../../controllers/firebase-auth-controllers')
@@ -36,13 +37,15 @@ router.get('/predict', (req,res,next) =>{
     })
 })
 
+router.use('/history',showall)
+
 router.post('/register', FirebaseAuthController.registerUser);
 router.post('/login', FirebaseAuthController.loginUser);
 router.post('/logout', FirebaseAuthController.logoutUser);
 router.post('/reset-password', FirebaseAuthController.resetPassword);
 
 
-router.use('/predict',upload.single('image'), multerErrorHandler,postPredictHandler)
+router.use('/predict',verifyToken,upload.single('image'), multerErrorHandler,postPredictHandler)
 
 
 module.exports = router

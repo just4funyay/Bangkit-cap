@@ -3,7 +3,9 @@
 const { admin } = require("../config/firebase");
 
 const verifyToken = async (req, res, next) => {
-    const idToken = req.cookies.access_token;
+    const authHeader = req.headers.authorization;
+    const idToken = authHeader.split('Bearer ')[1];
+    console.log(idToken)
     if (!idToken) {
         return res.status(403).json({ error: 'No token provided' });
     }

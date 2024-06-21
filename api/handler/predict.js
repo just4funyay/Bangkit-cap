@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 router.post('/',async(req,res)=>{
     const  image  = req.file.buffer
     const { model } = req.app.locals
-
+    console.log(req)
     const id = crypto.randomUUID()
     const createdAt = new Date().toISOString()
     const { result, suggestion, confidenceScore } = await predictClassification(model,image);
